@@ -5,6 +5,7 @@ on:
     branches: [main]
     types:
       - completed
+jobs:
   build-and-push-docker-image:
     #needs: test-backend
     runs-on: ubuntu-22.04
