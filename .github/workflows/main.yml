@@ -35,11 +35,11 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./Database
-          tags: ${{secrets.DOCKERLOGIN}}/tp1-backend:latest
+          tags: ${{secrets.DOCKERLOGIN}}/tp1-database:latest
           push: true
       - name: Build image and push httpd
         uses: docker/build-push-action@v3
         with:
           context: ./webserver
-          tags: ${{secrets.DOCKERLOGIN}}/tp1-backend:latest
+          tags: ${{secrets.DOCKERLOGIN}}/tp1-httpd:latest
           push: true
