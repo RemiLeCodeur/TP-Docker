@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  backend:
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=usr
+      - POSTGRES_PASSWORD=pwd
+    #build: backend/.
+    image: remilecodeur/tp1-backend:1.0
+    container_name: javaBackendApi
+    networks:
+      - app-network
+    depends_on:
+      - database
+      - httpd
+
+  database:
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=usr
+      - POSTGRES_PASSWORD=pwd
+    #build: Database/.
+    image: remilecodeur/tp1-database:1.0
+    container_name: databaseTP1
+    networks:
+      - app-network
+
+  httpd:
+    ports:
+      - "80:80"
+    #build: webserver/.
+    image: remilecodeur/tp1-httpd:1.0
+    container_name: webserver
+    networks:
+      - app-network
+
+networks:
+  app-network:
