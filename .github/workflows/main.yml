@@ -15,7 +15,9 @@ jobs:
       - name: Build and test with Maven
         working-directory: ./backend
         run: mvn clean verify
-
+      - name: Quality gate
+        working-directory: ./backend
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=RemiLeCodeur_TP-Docker -Dsonar.organization=remilecodeur -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./backend/pom.xml
 
   build-and-push-docker-image:
     needs: test-backend
@@ -30,16 +32,16 @@ jobs:
         with:
           context: ./backend
           tags: ${{secrets.DOCKERLOGIN}}/tp1-backend:latest
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
       - name: Build image and push database
         uses: docker/build-push-action@v3
         with:
           context: ./Database
           tags: ${{secrets.DOCKERLOGIN}}/tp1-database:latest
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
       - name: Build image and push httpd
         uses: docker/build-push-action@v3
         with:
           context: ./webserver
           tags: ${{secrets.DOCKERLOGIN}}/tp1-httpd:latest
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
