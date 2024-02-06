@@ -1,0 +1,20 @@
+name: CI devops 2023
+on:
+  push:
+    branches: main
+jobs:
+  test-backend: 
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2.5.0
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build and test with Maven
+        working-directory: ./backend
+        run: mvn clean verify
+      - name: Quality gate
+        working-directory: ./backend
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=RemiLeCodeur_TP-Docker -Dsonar.organization=remilecodeur -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./pom.xml
