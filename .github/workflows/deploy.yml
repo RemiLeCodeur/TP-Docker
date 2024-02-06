@@ -1,3 +1,10 @@
+name: CI devops build and push Docker image
+on:
+  workflow_run:
+    workflows: ["CI devops"]
+    branches: [main]
+    types:
+      - completed
   build-and-push-docker-image:
     #needs: test-backend
     runs-on: ubuntu-22.04
