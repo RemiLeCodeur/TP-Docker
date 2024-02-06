@@ -1,0 +1,10 @@
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/dao/DepartmentDAO.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/controller/DepartmentController.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/SimpleApiApplication.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/service/StudentService.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/entity/Department.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/entity/Student.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/service/DepartmentService.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/dao/StudentDAO.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/controller/StudentController.java
+/Users/remi/Documents/cpe/devOps/TP1/backend/src/main/java/fr/takima/training/simpleapi/controller/GreetingController.java
