@@ -1,18 +1,19 @@
-# DATABASE
+# TP1
+## DATABASE
 
-## Créer image  
+### Créer image  
 	docker build -t database_tp1 .
 
-## Créer container BD  
+### Créer container BD  
 	docker run --name databaseTP1 -e POSTGRES_DB=db -e POSTGRES_USER=usr -e POSTGRES_PASSWORD=pwd -p 5432:5432 --network app-network -v volume_database_tp1:/var/lib/postgresql/data -d database_tp1
 
-## Exécuter BD
+### Exécuter BD
 	docker exec -it databaseTP1 psql -U usr db
 
-## Créer volume
+### Créer volume
 	docker volume create volume_database_tp1
 
-## Dockerfile
+### Dockerfile
 ```
 	FROM postgres:14.1-alpine
 
@@ -23,11 +24,11 @@
 	COPY script.sql /docker-entrypoint-initdb.d/
 ```
 
-# BACKEND API
+## BACKEND API
 
 Image: docker build -t java_tp1 .
 
-## Dockerfile  
+### Dockerfile  
 ```
 # TODO: Choose a java JRE
 FROM openjdk:latest
@@ -41,8 +42,8 @@ COPY Main.class /app/
 # TODO: Run the Java with: “java Main” command.
 CMD ["java", "Main"]
 ```
-# HTTP SERVEUR
-## dockerfile  
+## HTTP SERVEUR
+### dockerfile  
 ```
 # Utiliser l'image de base httpd
 FROM httpd
@@ -54,11 +55,13 @@ COPY reverse-proxy.conf /usr/local/apache2/conf/extra/
 RUN echo "Include conf/extra/reverse-proxy.conf" >> /usr/local/apache2/conf/httpd.conf
 ```
 
-# DOCKER COMPOSE  
-## Docker login  
+## DOCKER COMPOSE  
+### Docker login  
 	aller sur https://hub.docker.com/settings/security pour générer un token  
 
-## Publish image  
+### Publish image  
 	docker tag tp1-database remilecodeur/tp1-database:1.0  
 	docker push remilecodeur/tp1-database:1.0  
 
+
+# TP2
