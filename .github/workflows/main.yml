@@ -17,7 +17,7 @@ jobs:
         run: mvn clean verify
       - name: Quality gate
         working-directory: ./backend
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey=RemiLeCodeur_TP-Docker -Dsonar.organization=remilecodeur -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./backend/pom.xml
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=RemiLeCodeur_TP-Docker -Dsonar.organization=remilecodeur -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./pom.xml
 
   build-and-push-docker-image:
     needs: test-backend
