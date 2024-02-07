@@ -6,8 +6,6 @@
     state: started
     networks:
       - name: app-network
-    ports:
-      - "8080:8080"
     env:
       POSTGRES_DB: "{{ POSTGRES_DB }}"
       POSTGRES_USER: "{{ POSTGRES_USER }}"
