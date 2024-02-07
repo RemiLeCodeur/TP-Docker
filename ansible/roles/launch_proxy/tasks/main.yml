@@ -2,7 +2,7 @@
 - name: Launch webserver
   docker_container:
     name: webserver
-    image: remilecodeur/tp1-httpd:latest
+    image: remilecodeur/tp1-httpd:1.1
     state: started
     networks:
       - name: app-network
