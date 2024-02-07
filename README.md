@@ -66,6 +66,15 @@ RUN echo "Include conf/extra/reverse-proxy.conf" >> /usr/local/apache2/conf/http
 
 # TP2
 
+**2-1 Qu'est ce que testcontainers ?**
+
+Testcontainers est une bibliothèque Java simplifiant les tests d'intégration en fournissant des instances temporaires et légères de bases de données, de navigateurs web et d'autres services dans des conteneurs Docker, facilitant ainsi les tests d'intégration dans les environnements d'intégration continue.
+
+**2-3 Documentez la configuration de votre quality gate**
+
+Chaque critère doit atteindre au moins une note A.  
+La couverture de test doit dépasser 80% et le taux de duplication doit rester sous 3%.  
+Si l'une de ces conditions n'est pas remplie, l'étape de contrôle qualité dans la CI échoue.  
 
 # TP3
 
