@@ -1,9 +1,5 @@
-# Utiliser l'image de base httpd
-FROM httpd
-# FROM remilecodeur/front-devops:1.0
-
-# Copier le fichier reverse-proxy.conf dans le conteneur
-COPY reverse-proxy.conf /usr/local/apache2/conf/extra/
-
-# Activer les modules de proxy dans la configuration principale d'Apache
-RUN echo "Include conf/extra/reverse-proxy.conf" >> /usr/local/apache2/conf/httpd.conf
+# Use the Apache HTTP Server image
+FROM httpd:latest
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+# Expose port 80
+EXPOSE 80

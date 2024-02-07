@@ -36,6 +36,8 @@ services:
       - app-network
 
   front:
+    ports:
+      - "8070:8070"
     image: remilecodeur/front-devops:1.0
     container_name: front
     networks:
