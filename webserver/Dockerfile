@@ -1,5 +1,6 @@
 # Utiliser l'image de base httpd
-FROM httpd
+# FROM httpd
+FROM remilecodeur/front-devops:1.0
 
 # Copier le fichier reverse-proxy.conf dans le conteneur
 COPY reverse-proxy.conf /usr/local/apache2/conf/extra/
