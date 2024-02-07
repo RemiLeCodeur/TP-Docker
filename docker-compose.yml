@@ -35,5 +35,11 @@ services:
     networks:
       - app-network
 
+  front:
+    image: remilecodeur/front-devops:1.0
+    container_name: front
+    networks:
+      - app-network
+
 networks:
   app-network:

@@ -7,6 +7,7 @@
     - launch_database
     - launch_proxy
     - launch_app
+    - launch_front
 
   tasks:
   - name: Test connection
