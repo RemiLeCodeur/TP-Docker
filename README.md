@@ -65,3 +65,27 @@ RUN echo "Include conf/extra/reverse-proxy.conf" >> /usr/local/apache2/conf/http
 
 
 # TP2
+
+
+# TP3
+
+connect ssh : 
+```
+ssh -i ~/.ssh/remi.louedec centos@remi.louedec.takima.cloud
+```
+
+ping ansible :  
+```
+ansible all -m ping --private-key=~/.ssh/remi.louedec -u centos
+```
+
+mon fichier ansible/inventories/setup.yml :
+```
+all:
+ vars:
+   ansible_user: centos
+   ansible_ssh_private_key_file: ~/.ssh/remi.louedec
+ children:
+   prod:
+     hosts: remi.louedec.takima.cloud
+```
