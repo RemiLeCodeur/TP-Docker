@@ -89,3 +89,10 @@ all:
    prod:
      hosts: remi.louedec.takima.cloud
 ```
+
+publication image front :
+```
+	docker build -t front-devops .
+	docker tag front-devops remilecodeur/front-devops:1.0  
+	docker push remilecodeur/front-devops:1.0  
+```
