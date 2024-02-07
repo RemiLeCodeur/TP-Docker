@@ -2,7 +2,7 @@
 - name: Launch database container
   docker_container:
     name: databaseTP1
-    image: remilecodeur/tp1-database:1.0
+    image: remilecodeur/tp1-database:latest
     state: started
     networks:
       - name: app-network

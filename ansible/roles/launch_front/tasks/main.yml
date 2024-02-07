@@ -2,7 +2,7 @@
 - name: Launch front container
   docker_container:
     name: front
-    image: remilecodeur/front-devops:1.0
+    image: remilecodeur/front-devops:latest
     state: started
     networks:
       - name: app-network

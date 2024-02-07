@@ -7,7 +7,7 @@ services:
       - POSTGRES_USER=usr
       - POSTGRES_PASSWORD=pwd
     #build: backend/.
-    image: remilecodeur/tp1-backend:1.0
+    image: remilecodeur/tp1-backend:latest
     container_name: javaBackendApi
     networks:
       - app-network
@@ -21,7 +21,7 @@ services:
       - POSTGRES_USER=usr
       - POSTGRES_PASSWORD=pwd
     #build: Database/.
-    image: remilecodeur/tp1-database:1.0
+    image: remilecodeur/tp1-database:latest
     container_name: databaseTP1
     networks:
       - app-network
@@ -30,7 +30,7 @@ services:
     ports:
       - "80:80"
     #build: webserver/.
-    image: remilecodeur/tp1-httpd:1.0
+    image: remilecodeur/tp1-httpd:latest
     container_name: webserver
     networks:
       - app-network
@@ -38,7 +38,7 @@ services:
   front:
     ports:
       - "8070:8070"
-    image: remilecodeur/front-devops:1.0
+    image: remilecodeur/front-devops:latest
     container_name: front
     networks:
       - app-network

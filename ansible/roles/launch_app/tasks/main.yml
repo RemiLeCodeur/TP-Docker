@@ -2,7 +2,7 @@
 - name: Launch backend container
   docker_container:
     name: javaBackendApi
-    image: remilecodeur/tp1-backend:1.0
+    image: remilecodeur/tp1-backend:latest
     state: started
     networks:
       - name: app-network
