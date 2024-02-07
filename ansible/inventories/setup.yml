@@ -1,0 +1,13 @@
+all:
+  # Définit des variables qui s'appliquent à tous les hôtes
+ vars:
+  ansible_user: centos
+  ansible_ssh_private_key_file: ~/.ssh/remi.louedec
+  POSTGRES_DB: db
+  POSTGRES_USER: usr
+  POSTGRES_PASSWORD: pwd
+
+ children:
+   prod:
+      # Définit les hôtes
+     hosts: remi.louedec.takima.cloud

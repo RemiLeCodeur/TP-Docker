@@ -1,0 +1,42 @@
+# tasks file for roles/docker
+
+    # Installe le paquet "device-mapper-persistent-data"
+  - name: Install device-mapper-persistent-data
+    yum:
+      name: device-mapper-persistent-data
+      state: latest
+
+    # Installe le paquet "lvm2"
+  - name: Install lvm2
+    yum:
+      name: lvm2
+      state: latest
+
+    # Ajoute le référentiel Docker à partir de l'URL spécifiée
+  - name: add repo docker
+    command:
+      cmd: sudo yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+  - name: Install Docker
+    yum:
+      name: docker-ce
+      state: present
+
+    # Installe le paquet "python3" 
+  - name: Install python3
+    yum:
+      name: python3
+      state: present
+
+# Installe le module Python "docker" en utilisant Python 3
+  - name: Install docker with Python 3
+    pip:
+      name: docker
+      executable: pip3
+    vars:
+      ansible_python_interpreter: /usr/bin/python3
+
+  # S'assure que le service Docker est en cours d'exécution.
+  - name: Make sure Docker is running
+    service: name=docker state=started
+    tags: docker

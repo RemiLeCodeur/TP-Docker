@@ -1,0 +1,10 @@
+---
+- name: Launch webserver
+  docker_container:
+    name: webserver
+    image: remilecodeur/tp1-httpd:1.0
+    state: started
+    networks:
+      - name: app-network
+    ports:
+      - "80:80"

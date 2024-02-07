@@ -1,0 +1,13 @@
+- hosts: all
+  gather_facts: false
+  become: true #root
+  roles:
+    - network #role network inclu
+    - docker #role docker inclu
+    - launch_database
+    - launch_proxy
+    - launch_app
+
+  tasks:
+  - name: Test connection
+    ping:
