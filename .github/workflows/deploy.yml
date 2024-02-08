@@ -37,6 +37,6 @@ jobs:
         with:
           playbook: playbook.yml
           directory: ./ansible
-          key: ${{secrets.SSH_PRIVATE_KEY}}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           options: |
             --inventory inventories/setup.yml
