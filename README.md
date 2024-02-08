@@ -1,4 +1,3 @@
-byvernault@takima.fr
 # TP1
 ## DATABASE
 
