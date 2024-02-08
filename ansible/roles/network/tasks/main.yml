@@ -1,4 +1,4 @@
   - name: Create network
     community.general.docker_network:
-      name: app-network
+      name: "{{ network }}"
       state: present

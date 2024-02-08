@@ -5,7 +5,7 @@
     image: remilecodeur/tp1-backend:1.0
     state: started
     networks:
-      - name: app-network
+      - name: "{{ network }}"
     env:
       POSTGRES_DB: "{{ POSTGRES_DB }}"
       POSTGRES_USER: "{{ POSTGRES_USER }}"

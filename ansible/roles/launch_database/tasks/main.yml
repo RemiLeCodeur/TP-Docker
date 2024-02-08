@@ -1,11 +1,11 @@
 ---
 - name: Launch database container
   docker_container:
-    name: databaseTP1
+    name: "{{ postgres_hostname }}"
     image: remilecodeur/tp1-database:1.0
     state: started
     networks:
-      - name: app-network
+      - name: "{{ network }}"
     env:
       POSTGRES_DB: "{{ POSTGRES_DB }}"
       POSTGRES_USER: "{{ POSTGRES_USER }}"

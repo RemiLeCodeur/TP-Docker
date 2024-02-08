@@ -5,4 +5,4 @@
     image: remilecodeur/front-devops:1.2
     state: started
     networks:
-      - name: app-network
+      - name: "{{ network }}"
