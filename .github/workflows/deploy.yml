@@ -32,3 +32,11 @@ jobs:
           context: ./webserver
           tags: ${{secrets.DOCKERLOGIN}}/tp1-httpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: playbook.yml
+          directory: ./ansible
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          options: |
+            --inventory inventories/setup.yml
