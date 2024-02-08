@@ -70,6 +70,63 @@ RUN echo "Include conf/extra/reverse-proxy.conf" >> /usr/local/apache2/conf/http
 
 Testcontainers est une bibliothèque Java simplifiant les tests d'intégration en fournissant des instances temporaires et légères de bases de données, de navigateurs web et d'autres services dans des conteneurs Docker, facilitant ainsi les tests d'intégration dans les environnements d'intégration continue.
 
+**2-2 Document your Github Actions configurations**  
+```yml
+name: build and push Docker image
+
+# Déclencher le workflow lorsqu'une exécution du pipeline "CI devops" est complétée sur la branche principale.
+on:
+  workflow_run:
+    workflows: ["CI devops"]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  build-and-push-docker-image:
+    # Utiliser "needs" pour spécifier les dépendances de ce job, si nécessaire.
+    # needs: test-backend
+
+    # Utiliser une image Ubuntu 22.04 pour l'exécution du job.
+    runs-on: ubuntu-22.04
+
+    steps:
+      # Récupérer le code source de l'application.
+      - name: Checkout code
+        uses: actions/checkout@v2.5.0
+
+      # Se connecter à DockerHub en utilisant les informations d'identification stockées dans les secrets
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKERLOGIN }} -p ${{ secrets.DOCKERPWD }}
+
+      # Construire l'image Docker du backend et la pousser vers DockerHub
+      - name: Build image and push backend
+        uses: docker/build-push-action@v3
+        with:
+          context: ./backend
+          tags: ${{secrets.DOCKERLOGIN}}/tp1-backend:latest
+          # Pousse l'image uniquement si le déclencheur est la branche principale
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+      # Construire l'image Docker de la base de données et la pousser vers DockerHub
+      - name: Build image and push database
+        uses: docker/build-push-action@v3
+        with:
+          context: ./Database
+          tags: ${{secrets.DOCKERLOGIN}}/tp1-database:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+      # Construire l'image Docker du serveur HTTP et la pousser vers DockerHub
+      - name: Build image and push httpd
+        uses: docker/build-push-action@v3
+        with:
+          context: ./webserver
+          tags: ${{secrets.DOCKERLOGIN}}/tp1-httpd:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+```
+
+
 **2-3 Documentez la configuration de votre quality gate**
 
 Chaque critère doit atteindre au moins une note A.  
